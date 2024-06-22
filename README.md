@@ -23,3 +23,5 @@ How to use
                ,"Strings and integers uses the console's default text color but"
                ,"it works well with simple and associative arrays"
                ,[1234, 4321, {asdf: 1234, fdas: 4321}, [2345, 2345, 5678, "asdf"]])
+
+![image](https://github.com/KR1ZZ1/ahk-console/assets/102970447/3c6e1c91-c740-48c6-a4f6-ea3b99747c93)
