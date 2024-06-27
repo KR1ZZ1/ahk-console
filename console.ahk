@@ -1,3 +1,4 @@
+#Requires AutoHotkey <1.1.37
 #Include, Ansi.ahk
 
 class console {
