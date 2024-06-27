@@ -185,4 +185,11 @@ type(variable, type := "integer") {
 
     If variable is %type%
         return true
+
+    return false
+}
+
+"".base.print := Func("print")
+print(string) {
+    console.log(string)
 }
