@@ -10,18 +10,31 @@ How to use
     ; When console.ahk is in same folder
     ;#Include console.ahk
 
-    console.success("This is console.success(), its pretty chill.")
+    ; Example usage of "string".print() prototype using `console.log()`
+    A_AhkVersion.print()
+    
+    ; Example usage of console.success()
+    console.success("Operation completed successfully!")
+    
+    ; Example usage of console.info()
+    console.info("Informational message: The process is running smoothly.")
+    
+    ; Example usage of console.warn()
+    console.warn("Warning: Potential Issue Detected"
+                ,"Detailed Warning: The operation you attempted might cause unexpected behavior."
+                ,"Please verify your inputs and ensure all conditions are met before proceeding.")
+    
+    ; Example usage of console.error()
+    console.error("Error: Critical Failure"
+                 ,"An unexpected error occurred during the execution of the script."
+                 ,"Please check your configuration and try again.")
+    
+    ; Example usage of console.log()
+    complexArray := ["example string"
+                    ,[7, 8, 9, "nested array"]
+                    ,{id: 1, name: "Alice", attributes: {age: 30, occupation: "Engineer"}}]
+    console.log("Logging a complex array:", complexArray)
 
-    console.info("This is console.info() doing its thing")
+![image](https://github.com/KR1ZZ1/ahk-console/assets/102970447/11fb94f9-1a6b-4348-bc3e-d9f121046b02)
 
-    console.error("Error?!"
-                 ,"This is console.error()"
-                 ,"The first parameter serves as a blinking title to grab attention,"
-                 ,"while any additional parameters has a red text color.")
 
-    console.log("This is console.log()"
-               ,"Strings and integers uses the console's default text color but"
-               ,"it works well with simple and associative arrays"
-               ,[1234, 4321, {asdf: 1234, fdas: 4321}, [2345, 2345, 5678, "asdf"]])
-
-![image](https://github.com/KR1ZZ1/ahk-console/assets/102970447/3c6e1c91-c740-48c6-a4f6-ea3b99747c93)
