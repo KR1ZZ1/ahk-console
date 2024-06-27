@@ -73,6 +73,7 @@ class Ansi {
      * @return  {Ansi}                  string
      */
     wrap(string, params*) {
+        mod := ""
         For _, param in params {
             if (this[param] = this.discord || param = 1337) {
                 mod := "``````ansi`n" mod

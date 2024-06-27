@@ -91,6 +91,7 @@ OutputDebug(content, print := true, indent := 0) {
     }
 
     ; Object / Array string construction
+    index := 0, string := ""
     For key, value in content {
         index++
         string .= (string ? "`n" : (print ? Color.Wrap("array:" content.Count(), "white") " [`n" : "")) . (!print ? StrRepeat("    ", indent) : "") . "    " Color.Wrap(key, "blue") " => " (IsObject(value) ? Color.Wrap("array:" value.Count(), "white") " [`n" OutputDebug(value, 0, indent + 1) "`n"  (!print ? StrRepeat("    ", indent) : "") "    ]" (Content.Count() > Index ? ",":"") : type(value) ? Color.Wrap(value, "cyan") (Content.Count() > Index ? ",":"") : """" Color.Wrap(StrReplace(value, "`n", " - "), "rgb", 175, 175, 175) """" (Content.Count() > Index ? ",":""))
@@ -105,6 +106,7 @@ OutputDebug(content, print := true, indent := 0) {
 }
 
 StrRepeat(string, count) {
+    str := ""
     Loop, % count {
         str .= string
     }
