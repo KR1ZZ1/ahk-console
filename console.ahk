@@ -3,7 +3,7 @@
 class console {
     /**
      * Prints string or array to OutputDebug
-     * @param   {string|array|object} params*
+     * @param   {*} params* - Eg: `console.log("text", 123, [1, 2, 3])`
      * @return  {void}
      */
     log(params*) {
@@ -13,8 +13,10 @@ class console {
     }
 
     /**
-     * Prints to OutputDebug in green
-     * @param   {string|integer} params*
+     * Prints to OutputDebug
+     * - All parameters: **Bold, Green Text**
+     * 
+     * @param   {string|integer} params* - Eg: `console.success(1, 2, 3)`
      * @return  {void}
      */
     success(params*) {
@@ -28,8 +30,10 @@ class console {
     }
 
     /**
-     * Prints to OutputDebug in yellow italic
-     * @param   {string|integer} params*
+     * Prints to OutputDebug
+     * - All parameters: **Italic, Yellow Text**
+     * 
+     * @param   {string|integer} params* - Eg: `console.info(1, 2, 3)`
      * @return  {void}
      */
     info(params*) {
@@ -43,8 +47,11 @@ class console {
     }
 
     /**
-     * Accepts multiple params using the first as a blinking highlighted message and any preceding ones as red bold
-     * @param   {string|integer} params*
+     * Accepts multiple params to print to OutputDebug
+     * - First parameter: **White Text, Red Blinking Background**
+     * - Additional parameters: **Bold, Red Text**
+     * 
+     * @param   {string|integer} params* - Eg: `console.error("Title", "Content")`
      * @return  {void}
      */
     error(params*) {
@@ -67,11 +74,12 @@ class console {
  *
  * Written by krizzi @ discord
  * Date: 30.09.2023
+ * Modified: 27.06.2024
  * 
- * @param   {string|array}  content
- * @param   {bool}          print   primarily used by this function to control when to construct the string and when to print the constructed string
- * @param   {integer}       indent  primarily used to control array indentations during construction of the string
- * @return  {string}        string  output of the constructed string
+ * @param   {string|integer|array}  content
+ * @param   {bool?}                 print   primarily used by this function to control when to construct the string and when to print the constructed string
+ * @param   {integer?}              indent  primarily used to control array indentations during construction of the string
+ * @return  {string}                string  output of the constructed string
  */
 OutputDebug(content, print := true, indent := 0) {
     static Color := new Ansi()
@@ -105,9 +113,10 @@ StrRepeat(string, count) {
 
 /**
  * Check if variable is given type
- * @param {variable}    variable
- * @param {string}      [type] "integer"|"float"|"number"|"digit"|"xdigit"|"alpha"|"upper"|"lower"|"alnum"|"space"|"time"
- * @return {boolean}
+ * 
+ * @param   {variable}  variable
+ * @param   {string?}   type: ["integer"|"float"|"number"|"digit"|"xdigit"|"alpha"|"upper"|"lower"|"alnum"|"space"|"time"]
+ * @return  {boolean}
  */
 type(variable, type := "integer") {
     If type not in integer,float,number,digit,xdigit,alpha,upper,lower,alnum,space,time
