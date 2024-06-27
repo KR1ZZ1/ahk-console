@@ -100,5 +100,7 @@ class Ansi {
 
         If variable is %type%
             return true
+
+        return false
     }
 }
