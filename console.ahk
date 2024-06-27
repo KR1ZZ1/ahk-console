@@ -56,16 +56,57 @@ class console {
      * @return  {void}
      */
     error(params*) {
+        ; Get max length for center padding
+        lengths := []
+        for _,string in params {
+            lengths.Push(StrLen(string))
+        }
+        maxLength := Round(Max(lengths*) * 10) / 10 + 10
+
         Color := new Ansi()
         For index, string in params {
             if (IsObject(string)) {
                 throw Exception("This function requires strings or integers, use `console.log()` instead.")
             }
-            str := " " string " "
-            OutputDebug, % index < 2 ? Color.Wrap(str, "white", "red_background", "blinking")
-                                     : Color.Wrap(str, "red", "bold")
+            str := PadCenter(string, maxLength)
+            OutputDebug, % index < 2 
+                ? Color.Wrap(str, "white", "red_background", "blinking")
+                : Color.Wrap(str, "red", "bold")
         }
 
+        ; Append new line
+        OutputDebug, % ""
+    }
+
+    /**
+     * Accepts multiple params to print to OutputDebug
+     * - First parameter: **Black Text, Yellow Background, Bold**
+     * - Additional parameters: **Bold, Yellow Text**
+     * 
+     * @param   {string|integer} params* - Eg: `console.warn("Title", "Content")`
+     * @return  {void}
+     */
+    warn(params*) {
+        ; Get max length for center padding
+        lengths := []
+        for _,string in params {
+            lengths.Push(StrLen(string))
+        }
+        maxLength := Round(Max(lengths*) * 10) / 10 + 10
+
+        Color := new Ansi()
+        For index, string in params {
+            if (IsObject(string)) {
+                throw Exception("This function requires strings or integers, use `console.log()` instead.")
+            }
+            str := PadCenter(string, maxLength)
+            OutputDebug, % index < 2 
+                ? Color.Wrap(str, "black", "yellow_background", "bold")
+                : Color.Wrap(str, "yellow", "bold")
+        }
+
+        ; Append new line
+        OutputDebug, % ""
     }
 }
 
@@ -104,6 +145,23 @@ OutputDebug(content, print := true, indent := 0) {
     }
 
     return string
+}
+
+PadCenter(string, length, cornerChar := "") {
+    ; Calculate the total padding needed
+    totalPadding := length - StrLen(string) - (StrLen(cornerChar) * 2)
+    if (totalPadding <= 0) {
+        return string
+    }
+    
+    ; Calculate padding for the left and right sides
+    leftPadding := Floor(totalPadding / 2)
+    rightPadding := Ceil(totalPadding / 2)
+    
+    ; Create the padded string
+    paddedString := Format("{1:" leftPadding "}", "") . string . Format("{1:-" rightPadding "}", "")
+    
+    return cornerChar . paddedString . cornerChar
 }
 
 StrRepeat(string, count) {
