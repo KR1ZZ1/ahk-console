@@ -23,7 +23,7 @@ class console {
         Color := new Ansi()
         For _,string in params {
             if (IsObject(string)) {
-                throw Exception("this function requires text, use print instead.")
+                throw Exception("This function requires strings or integers, use `console.log()` instead.")
             }
             OutputDebug, % Color.Wrap(string, "green", "bold")
         }
@@ -40,7 +40,7 @@ class console {
         Color := new Ansi()
         For _,string in params {
             if (IsObject(string)) {
-                throw Exception("this function requires text, use print instead.")
+                throw Exception("This function requires strings or integers, use `console.log()` instead.")
             }
             OutputDebug, % Color.Wrap(string, "yellow", "italic")
         }
@@ -58,7 +58,7 @@ class console {
         Color := new Ansi()
         For index, string in params {
             if (IsObject(string)) {
-                throw Exception("this function requires text, use print instead.")
+                throw Exception("This function requires strings or integers, use `console.log()` instead.")
             }
             str := " " string " "
             OutputDebug, % index < 2 ? Color.Wrap(str, "white", "red_background", "blinking")
